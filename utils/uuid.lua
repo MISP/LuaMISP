@@ -175,6 +175,9 @@ function M.randomseed(seed)
     -- integer overflow, so reduce to prevent a bad seed
     seed = seed - math_floor(seed / 2^bitsize) * (2^bitsize)
   end
+  if lua_version == nil then
+      lua_version = 5.2
+  end
   if lua_version < 5.2 then
     -- 5.1 uses (incorrect) signed int
     math.randomseed(seed - 2^(bitsize-1))
