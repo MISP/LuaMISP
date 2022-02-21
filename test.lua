@@ -1,6 +1,7 @@
 local LuaMISP = require 'LuaMISP'
 
-local f = assert(io.open("test.lua", "rb"))
+local filepath = debug.getinfo(1).source:match("@?(.*)")
+local f = assert(io.open(filepath, "rb"))
 local bytes = f:read("*all")
 local attribute_attachment = Attribute:new({type='attachment', value='filename', data=bytes})
 assert(attribute_attachment.value == 'filename')
