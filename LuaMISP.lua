@@ -175,3 +175,12 @@ function Object:addReference(attribute, type)
     }
     table.insert(self.ObjectReference, reference)
 end
+
+function Object:getAttributeByName(attribute_name)
+    for i, attribute in ipairs(self.Attribute) do
+        if attribute.object_relation == attribute_name then
+            return attribute
+        end
+    end
+    return nil
+end
